@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-4.1.xsd 
+		">
+	<bean id="paAuthorizingRealm" class="com.blackcrystal.pa.security.PaAuthorizingRealm" />
+
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="paAuthorizingRealm"></property>
+	</bean>
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login" />
+		<property name="successUrl" value="/main/" />
+		<property name="unauthorizedUrl" value="/auth/unauthorized.jsp" />
+
+		<property name="filterChainDefinitions">
+			<value>
+				/test/**=anon
+				/main/**=authc
+				/user/list/**=authc,perms[admin:manage]
+				/user/info/**=authc
+				/device/list=authc
+				/device/info=authc
+			</value>
+		</property>
+	</bean>
+</beans>
