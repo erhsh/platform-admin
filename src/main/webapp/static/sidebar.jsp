@@ -63,7 +63,7 @@
 				</li>
 
 				<li>
-					<a href="form-wizard.html">
+					<a href="${ctx}/test/developing">
 						<i class="icon-double-angle-right"></i> 添加设备
 					</a>
 				</li>
@@ -80,13 +80,13 @@
 
 			<ul class="submenu">
 				<li>
-					<a href="faq.html">
+					<a href="${ctx}/test/developing">
 						<i class="icon-double-angle-right"></i> 用户列表
 					</a>
 				</li>
 
 				<li>
-					<a href="error-404.html">
+					<a href="${ctx}/test/developing">
 						<i class="icon-double-angle-right"></i> 添加用户
 					</a>
 				</li>

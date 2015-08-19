@@ -8,8 +8,12 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PaAuthorizingRealm extends AuthorizingRealm {
+
+	private Logger logger = LoggerFactory.getLogger(PaAuthorizingRealm.class);
 
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(
@@ -24,6 +28,8 @@ public class PaAuthorizingRealm extends AuthorizingRealm {
 		UsernamePasswordToken upt = (UsernamePasswordToken) token;
 
 		String username = upt.getUsername();
+		logger.info("auth username = {}", username);
+
 		AuthenticationInfo authInfo = new SimpleAuthenticationInfo("admin",
 				"admin", "admin haha");
 		return authInfo;
